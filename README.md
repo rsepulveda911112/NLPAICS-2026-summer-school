@@ -111,3 +111,13 @@ git pull && ./setup.sh NN        # NN = your lesson number
 ```
 
 When it prints `OK`, open your `practical.ipynb`, select your lesson's kernel ("NLPAICS NN"), and run it top to bottom. The machine is temporary: only what you push to the repository is kept.
+
+**Testing locally (optional):** the student machines use the public [`vastai/pytorch`](https://hub.docker.com/r/vastai/pytorch/) image, so you can iterate on your `setup.sh` on your own computer if you have Docker (and an NVIDIA GPU + container toolkit for the GPU parts):
+
+```bash
+docker run --rm -it --gpus all vastai/pytorch:<TAG> bash   # use the exact tag we announce
+git clone https://github.com/EEstevanell/NLPAICS-2026-summer-school.git
+cd NLPAICS-2026-summer-school && ./setup.sh NN
+```
+
+Without an NVIDIA GPU (e.g. macOS), drop `--gpus all`: installs and downloads can still be tested, GPU cells cannot. The shared test machine remains the reference: always do your final run there.
